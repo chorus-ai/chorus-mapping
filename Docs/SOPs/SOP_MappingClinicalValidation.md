@@ -29,8 +29,8 @@ The Clinical Expert compares the semantic content of two fields: "source_descrip
 ## STEP 4: VALIDATE MAPPING
 The Clinical Expert documents their decision in designated fields: 'review_date' captures the date of the review, 'reviewer_name' records the expert’s name, 'reviewer_comment' includes any additional notes, and 'orcid_id' provides the expert's unique identifier.
 
-* ***STEP 5: DISTRIBUTE REVIEW RESULTS**
-The expert consolidates and sends back the scrutinized review results using the preferred digital method email, [GitHub](https://github.com/chorus-ai/chorus-mapping-stage), or [Google Drive](https://drive.google.com/drive/u/4/folders/1R-8PQ8PUV1aSQyDGQ0O4ltP11Ycco6lM).
+## **STEP 5: DISTRIBUTE REVIEW RESULTS**
+The expert consolidates and sends back the scrutinized review results using the preferred digital method: email, [GitHub](https://github.com/chorus-ai/chorus-mapping-stage), or [Google Drive](https://drive.google.com/drive/u/4/folders/1R-8PQ8PUV1aSQyDGQ0O4ltP11Ycco6lM).
 
-* **STEP 6: PARTICIPATE IN DISCUSSION AND TRACK CHANGES**
+## **STEP 6: PARTICIPATE IN DISCUSSION AND TRACK CHANGES**
 The expert actively engages in discussions regarding their findings and keeps track of any changes made in response to their review.
