@@ -1,14 +1,16 @@
-# Mapping Clinical Validation
+# Guide for Clinical Validation of Mappings
 
-The clinical validation of mappings is a cornerstone in elevating the integrity and effectiveness of health data analytics. It guarantees that mappings are true reflections of clinical realities, thereby empowering healthcare professionals to make decisions with confidence, conduct robust research, and optimize patient care. Clinical experts, through meticulous semantic assessments of vocabulary mappings, are instrumental in ensuring the fidelity of data representation. This README serves as a comprehensive Guide, detailing the clinical validation of mappings.
+This guide serves as a technical manual for clinical experts, researchers, data scientists, and healthcare IT professionals engaged in health data harmonization using the OHDSI/OMOP framework. It aims to provide detailed guidance on the clinical validation of health data mappings to ensure their accuracy, reliability, reusability, and alignment with clinical practices.
+
+The document presents a structured approach to the clinical validation process, which is crucial for maintaining the integrity of data conversions. Designed to promote collaboration among various healthcare sites, this guide includes thorough instructions, methodologies, and definitions pertinent to different mapping scenarios and review processes. This approach aims to enhance the quality of data in healthcare research, ensuring that data conversions accurately reflect clinical meanings and support effective healthcare outcomes.
 
 # Value
 
 The clinical validation of mappings plays a pivotal role in enhancing the _quality and efficacy of health data analytics_. By ensuring that mappings accurately represent real-world clinical data, healthcare professionals can rely on them for precise decision-making, research, and patient care optimization. Below, we delve into the key benefits of this validation process:
-1. **Improved data quality and consistency:** clinical validation of mappings ensures that data from varied sources are consistently and accurately translated into the standard OMOP format. This uniformity is crucial for reliable data analysis across different healthcare settings. After implementing validated mappings, the consistency of patient data across their facilities will be improved, significantly enhancing the reliability of cross-institutional studies.
-2. **Enhanced predictive analytics:** validated mappings contribute to more accurate predictive models in healthcare. For example, a research project utilized clinically validated mappings for patient data, resulting in an increase in the accuracy of predictive models for patient readmissions. This improvement will be directly translated into better patient care strategies and resource allocation.
-3. **Facilitated data sharing and collaboration:** with clinically validated mappings, data sharing across different healthcare entities becomes seamless and efficient. Validated mappings enable quicker and more accurate data pooling for a large-scale study, reducing data preparation time.
-4. **Compliance with clinical standards:** сlinically validated mappings ensure compliance with evolving clinical standards and practices, thereby maintaining the relevance and applicability of the data. The use of validated mappings can reduce compliance-related discrepancies, aligning their data more closely with real-world scenarios.
+1. **Improved data quality and consistency:** Clinical validation of mappings ensures that data from varied sources are consistently and accurately translated into the standard OMOP format. This uniformity is crucial for reliable data analysis across different healthcare settings. After implementing validated mappings, the consistency of patient data across their facilities will be improved, significantly enhancing the reliability of cross-institutional studies.
+2. **Enhanced predictive analytics:** Validated mappings contribute to more accurate predictive models in healthcare. For example, a research project utilized clinically validated mappings for patient data, resulting in an increase in the accuracy of predictive models for patient readmissions. This improvement will be directly translated into better patient care strategies and resource allocation.
+3. **Facilitated data sharing and collaboration:** With clinically validated mappings, data sharing across different healthcare entities becomes seamless and efficient. Validated mappings enable quicker and more accurate data pooling for a large-scale study, reducing data preparation time.
+4. **Compliance with clinical standards:** Clinically validated mappings ensure compliance with evolving clinical standards and practices, thereby maintaining the relevance and applicability of the data. The use of validated mappings can reduce compliance-related discrepancies, aligning their data more closely with real-world scenarios.
 
 # Validation Approach
 
@@ -25,7 +27,7 @@ The mappings’ clinical validation approach is a meticulous and multi-faceted p
 
 ## 1\. Mapping table discovery
 
-Familiarize yourself with the structure of the table containing mappings, use a data dictionary if present to get information about each field meaning.
+Familiarize yourself with the structure of the table containing mappings, and use a data dictionary if present to get information about each field's meaning.
 
 #### Mapping Table Structure
 
@@ -45,11 +47,11 @@ Below is a table detailing _potential_ fields (columns) and their definitions, w
 | --- | --- | --- |
 | source_code/subject_id | varchar | Represents the original code used in the source data. This is the primary identifier for the data element before it is mapped to the standardized OMOP format. |
 | source_concept_id | integer | An auto-generated ID for the source term, serving as a unique identifier within the source system. |
-| source_vocabulary_id | text | Identifies the vocabulary or coding system used in the source data. Can reflect the origin of the dataset. |
+| source_vocabulary_id | text | Identifies the vocabulary or coding system used in the source data. It can reflect the origin of the dataset. |
 | source_description / subject_label / source_name | varchar | Provides a descriptive name or label for the source term, aiding in its identification and contextual understanding. |
 | source_description_synonym/<br><br>subject_synonym | varchar | Includes additional names or synonyms for the source term. |
 | predicate_id | varchar | Denotes the relationship between the source (subject) and target (object), essential for understanding the mapping direction and logic (see Mapping Scenarios). |
-| confidence | float8 | A score between 0 and 1 indicating the confidence or probability that the mapping is correct, with 1 denoting total confidence. Essential for understanding the mapping logic (see Mapping Scenarios). |
+| confidence | float8 | A score between 0 and 1 indicates the confidence or probability that the mapping is correct, with 1 denoting total confidence. Essential for understanding the mapping logic (see Mapping Scenarios). |
 | target_concept_id | integer | The standard OMOP concept ID to which the source term is mapped. |
 | target_concept_name | varchar | The name of the standard OMOP concept to which the source term is mapped. |
 | target_vocabulary_id | varchar | Identifies the vocabulary or coding system used in the target OMOP data. |
@@ -63,16 +65,16 @@ After ensuring that the list of mappings for validation is properly prioritized,
 
 ## 3\. Comparative mapping analysis
 
-Perform a comprehensive, row-by-row comparison between the source and target labels (names) taking into account all relevant metadata (synonyms, categories, domains, units). Utilize clinical expertise to evaluate the appropriateness of each mapping. This involves consulting with other healthcare professionals and referencing key clinical literature to validate the clinical relevance of the mappings. Utilize the [OHDSI Athena](https://athena.ohdsi.org/search-terms/start) tool for browsing OMOP concepts and mappings. Review carefully concepts from the source data that do not have a match in the OMOP standard vocabulary. This step is critical in pinpointing areas where the existing vocabulary may need expansion or refinement. If you find the appropriate mapping, replace the existing mapping to 0 with the mapping you found.
+Perform a comprehensive, row-by-row comparison between the source and target labels (names) taking into account all relevant metadata (synonyms, categories, domains, units). Utilize clinical expertise to evaluate the appropriateness of each mapping. This involves consulting with other healthcare professionals and referencing key clinical literature to validate the clinical relevance of the mappings. Utilize the [OHDSI Athena](https://athena.ohdsi.org/search-terms/start) tool for browsing OMOP concepts and mappings. Review carefully concepts from the source data that do not match the OMOP standard vocabulary. This step is critical in pinpointing areas where the existing vocabulary may need expansion or refinement. If you find the appropriate mapping, replace the existing mapping to 0 with the mapping you found.
 
 ### Mapping Scenarios
 
-This various mapping scenarios might be encountered in the process of mapping validation. Understanding these scenarios is crucial for clinical experts and researchers, data scientists, and healthcare IT professionals to effectively navigate the complexities of data harmonization and ensure the accuracy and reliability of mappings. Scenarios 1 through 3 shows good coverage by OMOP Standardized Vocabularies, while scenarios 4 through 11 highlight potential gaps:
+These various mapping scenarios might be encountered in the process of mapping validation. Understanding these scenarios is crucial for clinical experts and researchers, data scientists, and healthcare IT professionals to effectively navigate the complexities of data harmonization and ensure the accuracy and reliability of mappings. Scenarios 1 through 3 show good coverage by OMOP Standardized Vocabularies, while scenarios 4 through 11 highlight potential gaps:
 
 | **Scenario Number** | **Scenario Name** | **Description** | **OMOP relationship** | **Action** |
 | --- | --- | --- | --- | --- |
 | 1   | Single Exact Match with High Confidence (1-to-1) | The source term matches exactly with one target term in the OMOP standard, and the confidence level is high (close to 1). | Maps to | Validate the mapping, despite high confidence, to confirm its accuracy. |
-| 2   | Multiple Exact Matches with Varying Confidence Levels (1-to-1 with a Rule) | Several target terms in OMOP exactly match the source term, but with different confidence scores. | Maps to | Reviewer must decide on the most appropriate match, considering context and confidence scores. |
+| 2   | Multiple Exact Matches with Varying Confidence Levels (1-to-1 with a Rule) | Several target terms in OMOP exactly match the source term but with different confidence scores. | Maps to | Reviewer must decide on the most appropriate match, considering context and confidence scores. |
 | 3   | Single Exact Match with High Confidence (1-to-1) AND Exact Match Value | Suggests that the source term's mapping includes an extra layer of information, - a value or result of observation or measurement | Maps to + Maps to value | Verify the accuracy of how a value is represented in relation to its associated variable. |
 | 4   | Single Broad Match with High Confidence (1-to-1 but broad, “Is a”) | The source term broadly matches with one or more less specific (parent) target terms in OMOP, with high confidence. | Maps to/Is a | Validate the best fit, noting some detail may be lost in this broader categorization. |
 | 5   | Single Narrow Match with High Confidence (1-to-1 but narrow, “Subsumes”) | The source term narrowly matches with one or more specific (child) target terms in OMOP, with high confidence. | Maps to/Subsumes | Ensure the added granularity of the target term is relevant and beneficial. |
@@ -80,7 +82,7 @@ This various mapping scenarios might be encountered in the process of mapping va
 | 7   | Multiple Narrow Matches with Different Confidence Levels (1-to-1 but narrow, “Subsumes” and a Rule) | A number of less specific (parent) target terms in OMOP correspond to the source term, all sharing the same level of confidence. This implies that each of these parent terms is equally relevant. | Subsumes | Verify that each target concept is a semantically appropriate parent. |
 | 8   | Multiple Broad Matches with Identical Confidence Levels (1-to-many, “Is a”) | Several more specific (child) target terms in OMOP are aligned with the source term, each displaying equal confidence levels. | Maps to/Is a | Validate that all target concepts are semantic parents. |
 | 9   | Multiple Narrow Matches with Identical Confidence Levels (1-to-many, “Subsumes”) | Several more specific (child) target terms in OMOP match the source term, each with equal confidence levels. This implies that each of these child terms is equally relevant. | Subsumes | Confirm that all target concepts are semantically valid children and relevant. |
-| 10  | Related Match Only (no “Maps to” to OMOP standard) | The source term only has a related match in OMOP, without a direct equivalent. | Has asso finding/Has asso device/Has asso procedure | Assess if the related term sufficiently captures the essence of the source term. |
+| 10  | Related Match Only (no “Maps to” to OMOP standard) | The source term only has a related match in OMOP, without a direct equivalent. | Has also (associated) finding/Has asso device/Has asso procedure | Assess if the related term sufficiently captures the essence of the source term. |
 | 11  | No Match | There is no suitable mapping available in OMOP for the source term. | no “Maps to” to OMOP standard | Consider submitting the term as a candidate for addition to the OMOP vocabulary, following the [community contribution](https://github.com/OHDSI/Vocabulary-v5.0/wiki/Community-contribution) process. |
 
 Each of these scenarios requires a careful and context-specific approach. The validation process must take into account the nuances of each case, leveraging clinical expertise and data analysis skills to ensure that the mappings are technically accurate, clinically meaningful and useful.
@@ -89,10 +91,10 @@ Each of these scenarios requires a careful and context-specific approach. The va
 
 When comparing two terms (concepts) semantically, especially in a clinical context, we are evaluating the meaning and usage of each term to determine their equivalence, hierarchy, or relationship. Usually, the comparison involves _several layers of linguistic and clinical analysis_:
 
-- **Lexical analysis:** compare the fundamental words (lexemes) in both terms. Key lexemes which are present in both terms, suggesting a conceptual link.
-- **Synonyms and naming variations:** determine if different words or phrases are used to express similar concepts, such as "CT" and "Computed Tomography”.
-- **Syntax and structure:** analyze the grammatical structure of each term. Identify whether the subject is the same even if it is not stated but implied. Note the presence of modifiers that qualify the main action.
-- **Semantic analysis:** when comparing terms semantically, it can be helpful to analyze and compare the six semantic dimensions (LOINC-borrowed Parts):
+- **Lexical analysis:** Compare the fundamental words (lexemes) in both terms. Key lexemes which are present in both terms, suggest a conceptual link.
+- **Synonyms and naming variations:** Determine if different words or phrases are used to express similar concepts, such as "CT" and "Computed Tomography”.
+- **Syntax and structure:** Analyze the grammatical structure of each term. Identify whether the subject is the same even if it is not stated but implied. Note the presence of modifiers that qualify the main action.
+- **Semantic analysis:** When comparing terms semantically, it can be helpful to analyze and compare the six semantic dimensions (LOINC-borrowed Parts):
 
 1. **COMPONENT (ANALYTE)**: describes the main focus of the observation or measurement.
 2. **PROPERTY**: is the attribute or characteristic observed. Some terms might not distinctly define a PROPERTY, as they are more procedural than observational.
@@ -101,20 +103,20 @@ When comparing two terms (concepts) semantically, especially in a clinical conte
 5. **SCALE**: indicates how the observation or measurement is expressed. It can be Quantitative(Qn), Ordinal(Ord), Nominal(Nom), Narrative(Nar).
 6. **METHOD**: used if the technique affects the clinical interpretation.
 
-- **Contextual usage:** consider the context in which the terms are used.
-- **Clinical equivalence:** despite differences in specificity, terms might be considered clinically equivalent if they refer to the same event, but this depends on the context in which the terms are used.
-- **Pragmatic analysis:** reflect on how the terms are used in clinical communication.
+- **Contextual usage:** Consider the context in which the terms are used.
+- **Clinical equivalence:** Despite differences in specificity, terms might be considered clinically equivalent if they refer to the same event, but this depends on the context in which the terms are used.
+- **Pragmatic analysis:** Reflect on how the terms are used in clinical communication.
 - **Implication and inference:** deduce implicit meanings, as certain terms may lack explicit information in their names, but implicit connotations can be inferred.
 
 ## 4\. Decision Making
 
-The decision making is a crucial phase in the clinical validation process of mappings. It involves making informed choices based on clinical experience and knowledge. This section will guide you through the key steps and considerations in the decision-making process.
+The decision-making is a crucial phase in the clinical validation process of mappings. It involves making informed choices based on clinical experience and knowledge. This section will guide you through the key steps and considerations in the decision-making process.
 
-1. **Analyzing validation results:** compile and synthesize the results from the validation steps. Look for patterns or recurring issues in the validation data that might influence mapping decisions.
-2. **Making informed decisions:** use established criteria to make decisions on mappings. This includes assessing accuracy, clinical relevance, and consistency with the OHDSI/OMOP standards and real-world settings. Strive to find a balance between technical accuracy and practical applicability in clinical settings.
-3. **Documenting decisions:** record each decision made during the process, including the rationale and supporting evidence. This documentation is vital for transparency and future reference (see Review feedback submission).
+1. **Analyzing validation results:** Compile and synthesize the results from the validation steps. Look for patterns or recurring issues in the validation data that might influence mapping decisions.
+2. **Making informed decisions:** Use established criteria to make decisions on mappings. This includes assessing accuracy, clinical relevance, and consistency with the OHDSI/OMOP standards and real-world settings. Strive to find a balance between technical accuracy and practical applicability in clinical settings.
+3. **Documenting decisions:** Record each decision made during the process, including the rationale and supporting evidence. This documentation is vital for transparency and future reference (see Review feedback submission).
 4. **Updating the mapping table:** reflect these decisions in the mapping table, ensuring that it remains an accurate and up-to-date resource.
-5. **Continuous improvement:** establish a feedback loop to review the impact of these decisions on data quality and clinical utility, making adjustments as necessary. Regularly communicate with all stakeholders, including other clinical experts and data scientists, to ensure the decisions meet the needs of all users.
+5. **Continuous improvement:** Establish a feedback loop to review the impact of these decisions on data quality and clinical utility, making adjustments as necessary. Regularly communicate with all stakeholders, including other clinical experts and data scientists, to ensure the decisions meet the needs of all users.
 
 ## 5\. Testing Methodology
 
@@ -146,6 +148,8 @@ To streamline the review process and enhance the precision of health data mappin
 - `reviewer_name`: The full name of the individual reviewer or the name of the reviewing group.
 - `reviewer_comment`: Explanations or rationales behind the review decisions or suggestions.
 - `orcid_id`: The ORCID iD of the reviewer, if available.
+  
+Review-related fields can be customized according to a concrete need. Additional metadata regarding the mapping creator and reviewer, including ORCID ID, institutional affiliation, and email address, can also be captured and stored for enhanced traceability and verification. We recommend implementing the metadata proposed by [CTS personas project](https://prism.northwestern.edu/records/s7b3c-5bg43).
 
 ### Submission Methods
 
@@ -161,7 +165,7 @@ Reviews should be submitted in CSV format through one of the below channels:
 
 #### GitHub Repository Submission (the best option)
 
-- Reviews can be directly submitted by creating a pull request to the [`MappingReviewSubmission`]() directory within this GitHub repository. 
+- Reviews can be directly submitted by creating a branch and pull request to the [`chorus-mapping-stage`](https://github.com/chorus-ai/chorus-mapping-stage) repository within the project. 
 
 **Recommended Naming Convention for Submissions:** 
 
@@ -179,10 +183,10 @@ The process of clinical validation of mappings to OHDSI/OMOP is a meticulous and
 
 We extend our appreciation to the dedicated professionals who have contributed their collective expertise and collaborative effort to shape the clinical validation of mapping. This endeavor has brought together individuals from diverse backgrounds, united by a shared objective: _precision and reliability within the realm of healthcare data standards._ Our success in publishing this guide has been built on a foundation of collaboration and open communication. Through this validation process, we have collectively deepened our understanding of available health data standards. The lessons learned from each validation effort contribute to our evolving knowledge base, making us better equipped to navigate the complexities of health data harmonization. Our commitment to learning ensures that we continue to refine our practices and elevate our standards.
 
-The journey of clinical validation of mappings is not a destination but an ongoing commitment to excellence. It demands our unwavering dedication, diligence, and a relentless pursuit of precision. Our work in healthcare data analytics directly impacts patient care and drives advancements in healthcare research. All of us are the custodians of data quality, and our commitment to maintaining the highest standards is our pledge to those who rely on our work. Together, we stand at the forefront of healthcare data quality, poised to shape the future of healthcare for the better.
+The journey of clinical validation of mappings is not a destination but an ongoing commitment to excellence. It demands our unwavering dedication, diligence, and relentless pursuit of precision. Our work in healthcare data analytics directly impacts patient care and drives advancements in healthcare research. All of us are the custodians of data quality, and our commitment to maintaining the highest standards is our pledge to those who rely on our work. Together, we stand at the forefront of healthcare data quality, poised to shape the future of healthcare for the better.
 
 # Future Plans
 
-1) **Unified CHoRUS Vocabulary and Mapping Browser**: looking ahead, our vision includes the development of a unified online environment that will revolutionize the way we approach mapping browsing and clinical validation. This platform will serve as a central hub, bringing together the entire community of healthcare data professionals. It will offer a seamless experience for mapping exploration, ensuring easy access to comprehensive mapping resources. Additionally, it will streamline the clinical validation process, providing real-time collaboration and documentation features.
+1) **Unified CHoRUS Vocabulary and Mapping Browser**: Looking ahead, our vision includes the development of a unified online environment that will revolutionize the way we approach mapping browsing and clinical validation. This platform will serve as a central hub, bringing together the entire community of healthcare data professionals. It will offer a seamless experience for mapping exploration, ensuring easy access to comprehensive mapping resources. Additionally, it will streamline the clinical validation process, providing real-time collaboration and documentation features.
 
 2) **Embracing the power of Natural Language Processing (NLP)** is another exciting avenue on our roadmap. NLP has the potential to significantly enhance our ability to compare and validate mappings by analyzing and understanding the semantic nuances of healthcare terms. We plan to explore NLP-driven solutions that can automate certain aspects of the validation process, making it more efficient and accurate. LLMs can be implemented for terms comparison by utilizing their natural language understanding and semantic analysis capabilities to assess the similarity or relatedness between terms based on context, meaning, and language patterns.
