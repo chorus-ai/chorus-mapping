@@ -11,7 +11,7 @@ description:  A template for preparing SOP for Clinical Validation of Mappings
 
 This SOP outlines a comprehensive framework for the clinical validation process, which is essential for maintaining the integrity of data translations. It aims to foster effective collaboration among diverse experts by offering detailed guidelines, methodologies, and precise definitions tailored to guide clinical experts through complex mapping scenarios and review mechanisms. The ultimate goal of this document is to enhance the quality of harmonized data in healthcare research, ensuring that it accurately represents authentic clinical semantics and practices.
 
-# Procedures
+# [Procedures](https://github.com/chorus-ai/chorus-mapping/blob/mapping_dev/Docs/SOPs/SOP%20for%20Clinical%20Validation%20of%20Mappings.png)
 ---
 ## STEP 1: IDENTIFY AN EXPERT
 After selecting the mappings for validation, identify a Clinical Expert whose expertise matches the values listed in the **'clinical_expert_specialty'** column in the **'flowsheets-exactMatchesWExpertSpecialty'** tab of the [Delphi R2 T1&2: Mapping Clinical Validation - Collaborative Workspace](https://docs.google.com/spreadsheets/d/1EH61Y1xuNxei6CT_VcU0AeYY88Gk5aYExaF6THhzQ1U/edit?usp=sharing) Google Spreadsheet.
