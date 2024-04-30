@@ -15,6 +15,7 @@
 |source_code_description|Yes|varchar(255)|An optional description for the source code. This is included as a convenience to compare the description of the source code to the name of the concept.|
 |relationship_id|No|varchar(50)|An identifier of association type: Maps to - exact match; Maps to value - exact match value of Meas or Obs, Is a - broad match to a parent; Subsumes - narrow match to a child; Has component/Has asso - supplemental.|
 |target_concept_id|Yes|integer|A foreign key to the target Concept to which the source code is being mapped.|
+|target_concept_name|No|varchar(255)|A name of the target Concept to which the source code is being mapped.|
 |target_vocabulary_id|Yes|varchar(20)|A foreign key to the VOCABULARY table defining the vocabulary of the target Concept.|
 |target_domain_id|No|varchar(20)|Standard concept domain (OMOP or Delphi).| 
 |valid_start_date|Yes|date|The date when the mapping instance was first recorded.|
