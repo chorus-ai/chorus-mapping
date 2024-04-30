@@ -20,7 +20,7 @@ The mappings’ clinical validation approach is a meticulous and multi-faceted p
 
 1. Although clinical validation of mappings is not a standard requirement in ETL processes, we regard it as an essential component of the mapping axis within our ETL pipeline to guarantee the medical accuracy and utility of the data.
 2. Clinical validation of mappings is conducted by _clinical experts_.
-3. An efficient, centralized, real-time _collaborative workspace_ is essential to streamline asynchronous work and maintain transparency by attributing feedback to contributors.
+3. An efficient, centralized, real-time [collaborative workspace](https://docs.google.com/spreadsheets/d/1EH61Y1xuNxei6CT_VcU0AeYY88Gk5aYExaF6THhzQ1U/edit?usp=sharing) is essential to streamline asynchronous work and maintain transparency by attributing feedback to contributors.
 4. _Asynchronous review methodology_ enables healthcare experts from diverse sites to participate in the review process at their own pace, ensuring continuous updates.
 5. _Flexible participation_ allows reviewers to contribute voluntarily or through assigned tasks, offering varying levels of engagement.
 6. Scheduled _regular reviews_ (monthly, quarterly, or biannually) and _ad hoc reviews of mappings_ are recommended to stay aligned with workflow changes or vocabulary updates.
@@ -41,7 +41,7 @@ The structure of a mapping table is a fundamental component in the clinical vali
 - Ensure that the naming conventions and data formats employed are not only consistent but also in compliance with the established standards relevant to your project.
 - Implement measures to prevent the entry of secure, sensitive data into the mapping table.
 
-Below is a table detailing _potential_ fields (columns) and their definitions, which are commonly encountered in a mapping table:
+Below is a table detailing the fields (columns) and their definitions, which are commonly encountered in a mapping table:
 
 | **column name** | **data type** | **definition** |
 | --- | --- | --- |
@@ -190,3 +190,5 @@ The journey of clinical validation of mappings is not a destination but an ongoi
 1) **Unified CHoRUS Vocabulary and Mapping Browser**: Looking ahead, our vision includes the development of a unified online environment that will revolutionize the way we approach mapping browsing and clinical validation. This platform will serve as a central hub, bringing together the entire community of healthcare data professionals. It will offer a seamless experience for mapping exploration, ensuring easy access to comprehensive mapping resources. Additionally, it will streamline the clinical validation process, providing real-time collaboration and documentation features.
 
 2) **Embracing the power of Natural Language Processing (NLP)** is another exciting avenue on our roadmap. NLP has the potential to significantly enhance our ability to compare and validate mappings by analyzing and understanding the semantic nuances of healthcare terms. We plan to explore NLP-driven solutions that can automate certain aspects of the validation process, making it more efficient and accurate. LLMs can be implemented for terms comparison by utilizing their natural language understanding and semantic analysis capabilities to assess the similarity or relatedness between terms based on context, meaning, and language patterns.
+
+See also [SOP for Clinical Validation of Mappings](https://github.com/chorus-ai/chorus-mapping/blob/main/Docs/SOPs/SOP_MappingClinicalValidation.md).
