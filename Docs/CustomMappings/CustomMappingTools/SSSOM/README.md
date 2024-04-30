@@ -131,4 +131,5 @@ Based on an end-to-end analysis of real-world data and the OMOP Vocabulary conte
 | | `0:1` | zero-to-one mapping can indicate a mapping to a new OMOP extension concept | Particular OMOP extension concept which is required |
 | | `n:n` | many-to-many - several terms are mapped to several terms (e.g. can be used for mapping of a set of questions from one questionnaire to questions from different standard assessment tools) | Mapping of an assessment panel |
 | **confidence** | between 0 and 1 | “1” denotes full confidence in mapping while “0” - absence of such a confidence | Level of confidence in mapping                                                                                                                                                                                           |
+
 Therefore, to enhance the transparency of the OMOP Vocabulary, we suggest adding a mapping_metadata table to OMOP CDM that can capture additional details about the mapping development process and the resulting mapping quality.
