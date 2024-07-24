@@ -6,14 +6,14 @@ SELECT DISTINCT CASE
        SPLIT_PART(a.subject_id,':',1) AS source_vocabulary_id,
        subject_label AS source_code_description,
        CASE
-         WHEN predicate_id ~ 'exactMatch' THEN 'Maps to'
+         WHEN predicate_id ~ 'exactMatch|closeMatch' THEN 'Maps to'
          WHEN predicate_id ~ 'narrowMatch' THEN 'Subsumes'
          WHEN predicate_id ~ 'broadMatch' THEN 'Is a'
          WHEN predicate_id ~ 'hasComponent' THEN 'Has component'
          WHEN predicate_id ~ 'hasFocus' THEN 'Has focus'
-         WHEN predicate_id ~ 'relatedMatch|closeMatch' AND c.domain_id = 'Procedure' THEN 'Has asso proc'
-         WHEN predicate_id ~ 'relatedMatch|closeMatch' AND c.domain_id = 'Condition' THEN 'Has associated finding'
-         WHEN predicate_id ~ 'relatedMatch|closeMatch' AND c.domain_id = 'Measurement' THEN 'Has measurement'
+         WHEN predicate_id ~ 'relatedMatch' AND c.domain_id = 'Procedure' THEN 'Has asso proc'
+         WHEN predicate_id ~ 'relatedMatch' AND c.domain_id = 'Condition' THEN 'Has associated finding'
+         WHEN predicate_id ~ 'relatedMatch' AND c.domain_id = 'Measurement' THEN 'Has measurement'
          ELSE 'Has relat context'
        END AS relationship_id,
        c.concept_id AS target_concept_id,
